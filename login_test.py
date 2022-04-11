@@ -93,7 +93,7 @@ def main():
         time.sleep(1)
 
         if center is not None:
-            print("FOUND CHROME")
+            print("Found Chrome")
             pag.doubleClick(center)
             time.sleep(3)
 
@@ -154,7 +154,7 @@ def main():
             center_origin = pag.locateCenterOnScreen('asset/1440/streamer_login_2.png')
 
             if center_origin is not None:
-                print("FOUND ANOTHER ONE")
+                print("Found another one")
             
                 pag.click(center_origin)
                 time.sleep(1)
@@ -198,7 +198,7 @@ def main():
             center = pag.locateCenterOnScreen('asset/1440/not_login.png')
 
             if center is not None:
-                print("FOUND ANOTHER ONE")
+                print("Found Another One")
                 print(2)
             
             else:
@@ -207,7 +207,7 @@ def main():
                 break
 
         else:
-            print("FOUND LOGIN ID/PW POSITION")
+            print("Found Login ID/PW Position")
             print(2.5)
         
         print(3)
@@ -286,7 +286,7 @@ def main():
                     # center = pag.locateCenterOnScreen('asset/1440/login_mail2_en.png')
                     
             if center is not None:
-                print("FOUND EN LOGIN MAIL")
+                print("Found EN Login Mail")
                 print("5.6.en")
 
             else:
@@ -300,7 +300,7 @@ def main():
             #     print(5.6)
         
         else:
-            print("FOUND KR LOGIN MAIL")
+            print("Found KR Login Mail")
             print(5)
 
         pag.click(center)
@@ -327,7 +327,7 @@ def main():
             center = pag.locateCenterOnScreen('asset/1440/find_code.png')
             
         if center is not None:
-            print("FOUND LOGIN CODE IN MAIL")
+            print("Found Login code in MAail")
             print(6)
             x, y = center
             y = y + 55
@@ -353,7 +353,7 @@ def main():
         center = pag.locateCenterOnScreen('asset/1440/login_code_input.png')
         
         if center is not None:
-            print("FOUND TYPING LOGIN CODE POSITION")
+            print("Found typing Login code Position")
             print(7)
             pag.click(center)
 
@@ -368,6 +368,103 @@ def main():
 
         # 로그인 완료
 
+        # 대시보드 튜토리얼 스킵버튼
+        center = pag.locateCenterOnScreen('asset/1440/dashboard_skip.png')
+
+        if center is not None:
+            print("Found skip button in dashboard page")
+            print(8)
+            pag.click(center)
+            time.sleep(1)
+
+        else:
+            print("CAN'T FINT THE SKIP BUTTON IN DASHBOARD PAGE")
+            print(7.9)
+        
+        # 새 시크릿 창 열기
+        pag.hotkey('ctrl','shift','n')
+        time.sleep(1)
+
+        # Alert Box 오버레이 주소 입력
+        pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/7mMNp5qvL7', interval=0.1)
+        time.sleep(1)
+        pag.press('enter')
+        time.sleep(5)
+
+        # 좌로 밀착
+        pag.hotkey('winleft','left')
+        time.sleep(1)
+        pag.hotkey('winleft')
+        pag.hotkey('winleft')
+        time.sleep(1)
+        
+        # 새 시크릿 창 열기
+        pag.hotkey('ctrl','shift','n')
+        time.sleep(1)
+
+        # 후원페이지 접속
+        pag.typewrite('https://ejn.mytwip.net/beomtest95', interval=0.1)
+        time.sleep(1)
+        pag.press('enter')
+        time.sleep(5)
+
+        # 우상 밀착
+        pag.hotkey('winleft','right')
+        time.sleep(1)
+        pag.hotkey('winleft')
+        pag.hotkey('winleft')
+        time.sleep(1)
+        pag.hotkey('winleft','up')
+        pag.hotkey('winleft')
+        pag.hotkey('winleft')
+        time.sleep(1)
+
+        if center is not None:
+            print("Found Done Twitch Login button in done page")
+            print(9)
+            pag.click(center)
+            time.sleep(10)
+
+        else:
+            print("CAN'T FINT THE DONE TWITCH LOGIN BUTTON IN DONE PAGE")
+            print(8.9)
+        
+
+        # 새 시크릿 창 열기
+        pag.hotkey('ctrl','shift','n')
+        time.sleep(1)
+
+        # 잔액 마이페이지 접속
+        pag.typewrite('https://ejn.mytwip.net/member/mypage', interval=0.1)
+        time.sleep(1)
+        pag.press('enter')
+        time.sleep(5)
+
+        # 우하 밀착
+        pag.hotkey('winleft','right')
+        time.sleep(1)
+        pag.hotkey('winleft')
+        pag.hotkey('winleft')
+        time.sleep(1)
+        pag.hotkey('winleft','down')
+        time.sleep(1)
+        pag.hotkey('winleft')
+        pag.hotkey('winleft')
+        time.sleep(1)
+
+        # 후원 페이지 트위치 로그인 버튼
+        center = pag.locateCenterOnScreen('asset/1440/done_twitch_login.png')
+
+        if center is not None:
+            print("Found Done Twitch Login button in done page")
+            print(9)
+            pag.click(center)
+            time.sleep(10)
+
+        else:
+            print("CAN'T FINT THE DONE TWITCH LOGIN BUTTON IN DONE PAGE")
+            print(8.9)
+        
 
 if __name__ == "__main__":
     main()
