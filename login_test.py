@@ -3,6 +3,8 @@ import time
 import keyboard
 import threading as th
 
+from real_done import donation
+
 # 루프 강제 탈출용 'q' 버튼 누르면 탈출가능 이였으나 모든 라인마다 조건을 확인해야해서 무쓸모 왼쪽위에 마우스커서를 놓고있는게 나음.
 keep_going = True
 def key_capture_thread():
@@ -88,18 +90,26 @@ def main():
     while keep_going:
         time.sleep(1)
 
-        # 바탕화면 크롬 아이콘 더블클릭
-        center = pag.locateCenterOnScreen('asset/1440/chrome_desktop_icon.png')
+        # # 바탕화면 크롬 아이콘 더블클릭
+        # center = pag.locateCenterOnScreen('asset/1440/chrome_desktop_icon.png')
+        # time.sleep(1)
+
+        # if center is not None:
+        #     print("Found Chrome")
+        #     pag.doubleClick(center)
+        #     time.sleep(3)
+
+        # else:
+        #     print("CAN'T FIND CHROME IN DESKTOP")
+        #     break
+
+        # 시작 -> 크롬 열기
+        pag.hotkey('winleft')
         time.sleep(1)
 
-        if center is not None:
-            print("Found Chrome")
-            pag.doubleClick(center)
-            time.sleep(3)
-
-        else:
-            print("CAN'T FIND CHROME IN DESKTOP")
-            break
+        pag.typewrite('chrome', interval=0.1)
+        pag.press('enter')
+        time.sleep(5)
         
         # 시크릿 탭 열기
         pag.hotkey('ctrl', 'shift', 'n')
@@ -385,8 +395,8 @@ def main():
         pag.hotkey('ctrl','shift','n')
         time.sleep(1)
 
-        # Alert Box 오버레이 주소 입력
-        pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/7mMNp5qvL7', interval=0.1)
+        # 후원페이지 접속
+        pag.typewrite('https://ejn.mytwip.net/beomtest95', interval=0.1)
         time.sleep(1)
         pag.press('enter')
         time.sleep(5)
@@ -397,13 +407,26 @@ def main():
         pag.hotkey('winleft')
         pag.hotkey('winleft')
         time.sleep(1)
-        
+
+        # 후원 페이지 트위치 로그인 버튼
+        center = pag.locateCenterOnScreen('asset/1440/done_twitch_login.png')
+
+        if center is not None:
+            print("Found Done Twitch Login button in done page")
+            print(9)
+            pag.click(center)
+            time.sleep(10)
+
+        else:
+            print("CAN'T FINT THE DONE TWITCH LOGIN BUTTON IN DONE PAGE")
+            print(8.9)
+
         # 새 시크릿 창 열기
         pag.hotkey('ctrl','shift','n')
         time.sleep(1)
 
-        # 후원페이지 접속
-        pag.typewrite('https://ejn.mytwip.net/beomtest95', interval=0.1)
+        # Alert Box 오버레이 주소 입력
+        pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/7mMNp5qvL7', interval=0.1)
         time.sleep(1)
         pag.press('enter')
         time.sleep(5)
@@ -418,17 +441,6 @@ def main():
         pag.hotkey('winleft')
         pag.hotkey('winleft')
         time.sleep(1)
-
-        if center is not None:
-            print("Found Done Twitch Login button in done page")
-            print(9)
-            pag.click(center)
-            time.sleep(10)
-
-        else:
-            print("CAN'T FINT THE DONE TWITCH LOGIN BUTTON IN DONE PAGE")
-            print(8.9)
-        
 
         # 새 시크릿 창 열기
         pag.hotkey('ctrl','shift','n')
@@ -452,19 +464,8 @@ def main():
         pag.hotkey('winleft')
         time.sleep(1)
 
-        # 후원 페이지 트위치 로그인 버튼
-        center = pag.locateCenterOnScreen('asset/1440/done_twitch_login.png')
-
-        if center is not None:
-            print("Found Done Twitch Login button in done page")
-            print(9)
-            pag.click(center)
-            time.sleep(10)
-
-        else:
-            print("CAN'T FINT THE DONE TWITCH LOGIN BUTTON IN DONE PAGE")
-            print(8.9)
-        
+        donation()
+        break
 
 if __name__ == "__main__":
     main()

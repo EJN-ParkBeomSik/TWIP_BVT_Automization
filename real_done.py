@@ -13,16 +13,16 @@ def key_capture_thread():
     if a== "q":
         keep_going = False
 
-def main():
+def donation():
     done_price = 1000
     before_clipboard_data = -1
     count = 0
-    asset_path = "asset/"
+    asset_path = "asset/1440/"
 
     th.Thread(target=key_capture_thread, args=(), name='key_capture_thread', daemon=True).start()
 
     while keep_going:
-        center = pag.locateCenterOnScreen(asset_path + 'done_thx.png')
+        center = pag.locateCenterOnScreen(asset_path + 'done_thx_2.png')
         print("step 0")
         if center is not None:
             pag.click(center)
@@ -31,7 +31,7 @@ def main():
             pag.press('f5')
             time.sleep(5)
         
-        center = pag.locateCenterOnScreen(asset_path + 'message_click.png')
+        center = pag.locateCenterOnScreen(asset_path + 'message_click_2.png')
         print("step 1")
         # 도네 가격 변경 추가필요
         if center is not None:
@@ -118,4 +118,4 @@ def main():
         count += 1
 
 if __name__ == "__main__":
-    main()
+    donation()
