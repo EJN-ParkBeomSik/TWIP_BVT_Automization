@@ -232,8 +232,8 @@ def main():
         if get_hanguel_state() == 1: #1 일경우 vk_key : 0x15(한글키)가 활성화
             change_state() #한글키 누르고(key_press) , 때기(release)
 
-        # 아이디 입력
-        pag.typewrite('beomtest95', interval=0.1)
+        # 트위치 아이디 입력
+        pag.typewrite('beomtest95_2', interval=0.1)
         time.sleep(1)
 
         y = y_origin -80 # 자동로그인 창 버그 해결용 클릭
@@ -396,7 +396,7 @@ def main():
         time.sleep(1)
 
         # 후원페이지 접속
-        pag.typewrite('https://ejn.mytwip.net/beomtest95', interval=0.1)
+        pag.typewrite('https://ejn.mytwip.net/beomtest95_2', interval=0.1)
         time.sleep(1)
         pag.press('enter')
         time.sleep(5)
@@ -406,7 +406,7 @@ def main():
         time.sleep(1)
         pag.hotkey('winleft')
         pag.hotkey('winleft')
-        time.sleep(1)
+        time.sleep(10)
 
         # 후원 페이지 트위치 로그인 버튼
         center = pag.locateCenterOnScreen('asset/1440/done_twitch_login.png')
@@ -426,7 +426,8 @@ def main():
         time.sleep(1)
 
         # Alert Box 오버레이 주소 입력
-        pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/7mMNp5qvL7', interval=0.1)
+        # pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/7mMNp5qvL7', interval=0.1) #beomtest95
+        pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/KbzvAPER7g', interval=0.1) #beomtest95_2
         time.sleep(1)
         pag.press('enter')
         time.sleep(5)
