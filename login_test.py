@@ -82,9 +82,6 @@ def change_state():
 
 
 def main():
-    '''
-    크롬 주소창에 한영 확인 후 바탕화면 크롬아이콘 보이게 시작 -> 윈도우버튼 누르고 chrome 검색 실행으로 바꾸는게 나을듯
-    '''
     th.Thread(target=key_capture_thread, args=(), name='key_capture_thread', daemon=True).start()
 
     while keep_going:
@@ -104,23 +101,28 @@ def main():
         #     break
 
         # 시작 -> 크롬 열기
+        print("press windows key")
         pag.hotkey('winleft')
         time.sleep(1)
 
+        print("type chrome")
         pag.typewrite('chrome', interval=0.1)
         pag.press('enter')
         time.sleep(5)
         
         # 시크릿 탭 열기
+        print("open secret tab")
         pag.hotkey('ctrl', 'shift', 'n')
         time.sleep(3)
 
         # 크롬 최대화
+        print("expand chrome")
         pag.hotkey('alt', 'space')
         pag.hotkey('x')
         time.sleep(3)
 
         # 지메일 이동
+        print("type gmail")
         pag.typewrite('gmail.com', interval=0.1)
         pag.press('enter')
         time.sleep(5)
@@ -131,6 +133,7 @@ def main():
         #     pag.click(center)
             
         # 지메일 아이디 입력
+        print("type gmail id")
         pag.typewrite('beomtest95', interval=0.1)
         time.sleep(1)
         pag.press('enter')
@@ -141,16 +144,19 @@ def main():
         #     break
         
         # 지메일 비밀번호 입력
+        print("type gmail pw")
         pag.typewrite('ejn123!@', interval=0.1)
         time.sleep(1)
         pag.press('enter')
         time.sleep(10)
 
         # 새 탭 열기
+        print("open new tab")
         pag.hotkey('ctrl', 't')
         time.sleep(1)
 
         # 트윕 스테이징 접속
+        print("type twip page")
         pag.typewrite('https://ejn.mytwip.net/', interval=0.1)
         time.sleep(1)
         pag.press('enter')
@@ -228,11 +234,12 @@ def main():
         pag.click(center)
         time.sleep(1)
 
-        #한 > 영, 동작안함.
-        if get_hanguel_state() == 1: #1 일경우 vk_key : 0x15(한글키)가 활성화
-            change_state() #한글키 누르고(key_press) , 때기(release)
+        # #한 > 영, 동작안함.
+        # if get_hanguel_state() == 1: #1 일경우 vk_key : 0x15(한글키)가 활성화
+        #     change_state() #한글키 누르고(key_press) , 때기(release)
 
         # 트위치 아이디 입력
+        print("type id")
         pag.typewrite('beomtest95_2', interval=0.1)
         time.sleep(1)
 
@@ -247,6 +254,7 @@ def main():
         time.sleep(1)  
 
         # 비번 입력
+        print("type pw")
         pag.typewrite('ejn123!@ejn123!@', interval=0.1)
         time.sleep(1)
 
@@ -269,8 +277,10 @@ def main():
         print(4)
 
         # 브라우저 탭 변경
+        print("add new tab")
         pag.hotkey('ctrl','tab')
         time.sleep(10)
+        print("refresh")
         pag.press('f5')
         time.sleep(10)
             
@@ -317,6 +327,7 @@ def main():
         time.sleep(5)
 
         # 인증 메일이 많이 와서 인증번호가 안나올 가능성 방지
+        print("press down")
         pag.press('down')
         pag.press('down')
         pag.press('down')
@@ -337,7 +348,7 @@ def main():
             center = pag.locateCenterOnScreen('asset/1440/find_code.png')
             
         if center is not None:
-            print("Found Login code in MAail")
+            print("Found Login code in Mail")
             print(6)
             x, y = center
             y = y + 55
@@ -352,10 +363,12 @@ def main():
             break
 
         # 인증번호 복사
+        print("copy the number")
         pag.hotkey('ctrl','c')
         time.sleep(1)
 
         # 트위치 로그인 화면으로 탭 변경
+        print("change the tab")
         pag.hotkey('ctrl','tab')
         time.sleep(1)
 
@@ -368,6 +381,7 @@ def main():
             pag.click(center)
 
             # 인증번호 붙여 넣기
+            print("paste the number")
             pag.hotkey('ctrl','v')
             time.sleep(10)
             
@@ -392,21 +406,24 @@ def main():
             print(7.9)
         
         # 새 시크릿 창 열기
+        print("open ney secret window")
         pag.hotkey('ctrl','shift','n')
         time.sleep(1)
 
         # 후원페이지 접속
+        print("open donation page")
         pag.typewrite('https://ejn.mytwip.net/beomtest95_2', interval=0.1)
         time.sleep(1)
         pag.press('enter')
         time.sleep(5)
 
         # 좌로 밀착
+        print("set to left")
         pag.hotkey('winleft','left')
         time.sleep(1)
         pag.hotkey('winleft')
         pag.hotkey('winleft')
-        time.sleep(10)
+        time.sleep(15)
 
         # 후원 페이지 트위치 로그인 버튼
         center = pag.locateCenterOnScreen('asset/1440/done_twitch_login.png')
@@ -415,55 +432,61 @@ def main():
             print("Found Done Twitch Login button in done page")
             print(9)
             pag.click(center)
-            time.sleep(10)
+            time.sleep(15)
 
         else:
             print("CAN'T FINT THE DONE TWITCH LOGIN BUTTON IN DONE PAGE")
             print(8.9)
 
         # 새 시크릿 창 열기
+        print("new secret window")
         pag.hotkey('ctrl','shift','n')
-        time.sleep(1)
+        time.sleep(2)
 
         # Alert Box 오버레이 주소 입력
+        print("open alert box overay")
         # pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/7mMNp5qvL7', interval=0.1) #beomtest95
         pag.typewrite('https://ejn.mytwip.net/widgets/alertbox/KbzvAPER7g', interval=0.1) #beomtest95_2
-        time.sleep(1)
+        time.sleep(2)
         pag.press('enter')
-        time.sleep(5)
+        time.sleep(6)
 
         # 우상 밀착
+        print("set to right up")
         pag.hotkey('winleft','right')
-        time.sleep(1)
+        time.sleep(2)
         pag.hotkey('winleft')
         pag.hotkey('winleft')
-        time.sleep(1)
+        time.sleep(2)
         pag.hotkey('winleft','up')
         pag.hotkey('winleft')
         pag.hotkey('winleft')
-        time.sleep(1)
+        time.sleep(2)
 
         # 새 시크릿 창 열기
+        print("open new secret window")
         pag.hotkey('ctrl','shift','n')
-        time.sleep(1)
+        time.sleep(2)
 
         # 잔액 마이페이지 접속
+        print("type mypage")
         pag.typewrite('https://ejn.mytwip.net/member/mypage', interval=0.1)
-        time.sleep(1)
+        time.sleep(2)
         pag.press('enter')
-        time.sleep(5)
+        time.sleep(6)
 
         # 우하 밀착
+        print("set right down")
         pag.hotkey('winleft','right')
-        time.sleep(1)
+        time.sleep(2)
         pag.hotkey('winleft')
         pag.hotkey('winleft')
-        time.sleep(1)
+        time.sleep(2)
         pag.hotkey('winleft','down')
-        time.sleep(1)
+        time.sleep(2)
         pag.hotkey('winleft')
         pag.hotkey('winleft')
-        time.sleep(1)
+        time.sleep(2)
 
         donation()
         break

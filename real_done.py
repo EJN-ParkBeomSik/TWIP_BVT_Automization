@@ -29,6 +29,7 @@ def donation():
             pag.click(center)
             time.sleep(2)
 
+            print("refresh the page")
             pag.press('f5')
             time.sleep(5)
 
@@ -38,6 +39,7 @@ def donation():
         
         if center is not None:
             print("Found Donation Price Setting")
+            print("double click the price")
             pag.doubleClick(center)
             time.sleep(0.3)
 
@@ -70,6 +72,7 @@ def donation():
             pag.click(center)
             time.sleep(0.3)
 
+            print("type message")
             pag.typewrite('Hello world!', interval=0.1)
 
         else:
@@ -125,6 +128,8 @@ def donation():
             
             pag.click(center)
             time.sleep(2)
+            
+            print("refresh")
             pag.press('f5')
             time.sleep(5)
 
@@ -132,14 +137,17 @@ def donation():
             x = x + 35
             center = (x,y)
 
+            print("double click money")
             pag.doubleClick(center)
             time.sleep(2)
 
             # 현재 잔액 복사
+            print("copy the mnoney")
             pag.hotkey('ctrl','c')
             time.sleep(2)
 
-            # 복사된 잔액을 변수로 받음
+            # 복사된 잔액을 변수로 받음        
+            print("get clipboard")
             win32clipboard.OpenClipboard()
             clipboard_data = win32clipboard.GetClipboardData()
             win32clipboard.CloseClipboard()
