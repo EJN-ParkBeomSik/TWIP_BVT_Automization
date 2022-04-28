@@ -25,6 +25,7 @@ def donation():
         # 후원 완료 창이 있을 경우 새로고침 필요
         center = pag.locateCenterOnScreen(asset_path + 'done_thx_2.png')
         print("step 0")
+
         if center is not None:
             pag.click(center)
             time.sleep(2)
@@ -185,6 +186,9 @@ def donation():
 
         time.sleep(5)
         count += 1
+
+        if count > 5:
+            break
 
 if __name__ == "__main__":
     donation()

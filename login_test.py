@@ -2,8 +2,10 @@ import pyautogui as pag
 import time
 import keyboard
 import threading as th
+from mission_done import mission_done
 
 from real_done import donation
+from mission_done import mission_done
 
 # 루프 강제 탈출용 'q' 버튼 누르면 탈출가능 이였으나 모든 라인마다 조건을 확인해야해서 무쓸모 왼쪽위에 마우스커서를 놓고있는게 나음.
 keep_going = True
@@ -489,6 +491,7 @@ def main():
         time.sleep(2)
 
         donation()
+        mission_done()
         break
 
 if __name__ == "__main__":
