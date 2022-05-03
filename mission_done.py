@@ -279,6 +279,7 @@ if __name__ == "__main__":
 
     for i in range(2):
         before_clipboard_data = mission_done(before_clipboard_data)
+        print("please wait 3minute")
 
         # 미션 후원 최소 등록 시간 기다릭
         time.sleep(180)
