@@ -14,13 +14,6 @@ def key_capture_thread():
         keep_going = False
 
 def donation():
-    print("#######################################")
-    print("#######################################")
-    print("########## MESSAGE Donation ###########")
-    print("#######################################")
-    print("#######################################")
-    time.sleep(2)
-
     done_price = 2000
     before_clipboard_data = -1
     count = 0
@@ -194,7 +187,7 @@ def donation():
         time.sleep(5)
         count += 1
 
-        if count > 3:
+        if count > 5:
             break
 
 if __name__ == "__main__":

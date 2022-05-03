@@ -2,7 +2,7 @@ import pyautogui as pag
 import time
 import win32clipboard
 
-def mission_done(before_clipboard_data):
+def mission_done():
 
     print("#######################################")
     print("#######################################")
@@ -12,6 +12,7 @@ def mission_done(before_clipboard_data):
     time.sleep(1)
 
     done_price = 5000
+    before_clipboard_data = -1
     count = 0
     asset_path = "asset/1440/"
 
@@ -46,14 +47,12 @@ def mission_done(before_clipboard_data):
             
     # 미션 페이지 진입
     center = pag.locateCenterOnScreen(asset_path + 'mission.png')
-
     print("step 1")
-    time.sleep(10)
 
     if center is not None:
         print("Found mission button")
         pag.click(center)
-        time.sleep(5)
+        time.sleep(1)
 
     else:
         print("can't find mission button")
@@ -66,7 +65,7 @@ def mission_done(before_clipboard_data):
     if center is not None:
         print("Found mission neyong")
         pag.click(center)
-        time.sleep(2)
+        time.sleep(1)
 
         print("type message")
         pag.typewrite('Hello mission!', interval=0.1)
@@ -82,7 +81,7 @@ def mission_done(before_clipboard_data):
     if center is not None:
         print("Found mission price")
         pag.click(center)
-        time.sleep(2)
+        time.sleep(1)
 
         print("type precie")
         pag.typewrite('5000', interval=0.1)
@@ -98,7 +97,7 @@ def mission_done(before_clipboard_data):
     if center is not None:
         print("Found the limit time")
         pag.click(center)
-        time.sleep(2)
+        time.sleep(1)
 
     else:
         print("can't find mission price")
@@ -111,14 +110,14 @@ def mission_done(before_clipboard_data):
     if center is not None:
         print("Found 3 hour")
         pag.click(center)
-        time.sleep(2)
+        time.sleep(1)
 
         print("click minute")
         x, y = center
         x = x + 70
         
         pag.click((x,y))
-        time.sleep(2)
+        time.sleep(1)
 
     else:
         print("can't find 3 hour")
@@ -147,9 +146,8 @@ def mission_done(before_clipboard_data):
         time.sleep(10)
 
     else:
-        time.sleep(10)
-        # print("can't find check button")
-        # raise
+        print("can't find check button")
+        raise
 
     # 현재 잔액 찾기
     center = pag.locateCenterOnScreen(asset_path + 'janek.png')        
@@ -196,8 +194,7 @@ def mission_done(before_clipboard_data):
         print()
 
         # 복사된 잔액과 기존 잔액의 차이가 후원 캐시와 같은지 체크
-        # if before_clipboard_data - clipboard_number == done_price:
-        if before_clipboard_data - clipboard_number == 1000:
+        if before_clipboard_data - clipboard_number == done_price:
             print("Cash is good")
 
         else:
@@ -218,69 +215,10 @@ def mission_done(before_clipboard_data):
         print("CAN'T FIND NOW MONEY")
         raise
 
-    # 미션 취소 버튼
-    center = pag.locateCenterOnScreen(asset_path + 'mission_cancel.png')
-    print("step 9")
-
-    if center is not None:
-        print("found mission cancel button")
-        pag.click(center)
-        time.sleep(3)
-
-    else:
-        print("can't find mission cancel button")
-        raise
-
-    # 미션 취소 확정
-    center = pag.locateCenterOnScreen(asset_path + 'return_cash.png')
-    print("step 10")
-
-    if center is not None:
-        print("found get return button for mission cancel")
-        pag.click(center)
-        time.sleep(10)
-
-    else:
-        time.sleep(10)
-        # print("can't find return button for mission cancel")
-        # raise
-
-    # 미션 취소후 후원 메세지 확인
-    # Alert Box 후원 결과 찾기
-    center = pag.locateCenterOnScreen(asset_path + 'done_result.png')        
-    print("step 3")
-    
-    if center is None:
-        print("CAN'T FIND MISSION DONATION RESULT")
-        print()
-        print("#################")
-        tm = time.localtime()
-        time_msg = time.strftime('%Y-%m-%d %I:%M:%S %p', tm)
-        print(time_msg)                    
-        print("Failed donation!!")
-        print("#################")
-
-    else:
-        print("Found Mission Donation Result")
-        print()
-        tm = time.localtime()
-        time_msg = time.strftime('%Y-%m-%d %I:%M:%S %p', tm)
-
-        print(time_msg)                    
-        print("Successed Mission donation!!")
-
-    time.sleep(3)
-
-    return before_clipboard_data
+    time.sleep(5)
 
 
 if __name__ == "__main__":
-    before_clipboard_data = -1
-
-    for i in range(2):
-        before_clipboard_data = mission_done(before_clipboard_data)
-
-        # 미션 후원 최소 등록 시간 기다릭
-        time.sleep(180)
+    mission_done()
 
     
